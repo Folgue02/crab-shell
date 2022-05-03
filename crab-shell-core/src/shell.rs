@@ -38,7 +38,13 @@ impl Shell {
         // Empty command
         if user_input.command == "" {
             return None;
-        // Builtin command
+        // Change directory if the command its a directory
+        } else if std::path::Path::new(&user_input.command).is_dir() {
+            Some(self.change_dir(&command::Command {
+                command: "".to_string(),
+                arguments: vec![user_input.command],
+            }))
+        // Builtin commands
         } else if let Some(code) = self.execute_as_builtin(&user_input) {
             return Some(code);
         } else {
