@@ -7,3 +7,5 @@ edition = "2021"
 
 [dependencies]
 crab-shell-core = {path = "../crab-shell-core"}
+colored = "2.0.0"
+whoami = "0.1.0"
